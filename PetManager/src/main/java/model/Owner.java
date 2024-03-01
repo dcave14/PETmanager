@@ -1,12 +1,6 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -16,19 +10,19 @@ public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "owner_id")
-    private int ownerId;
+    private int ownerId; //unique id for owner
 
     @Column(name = "name")
-    private String name;
+    private String name; //owner's name
 
     @Column(name = "address")
-    private String address;
+    private String address; //owner's address
 
     @Column(name = "phone_number")
-    private String phoneNumber;
+    private String phoneNumber; //owner's phone number
 
     @OneToMany(mappedBy = "owner")
-    private List<Pet> pets;
+    private List<Pet> pets; //list of pets owned by owner
 
     public Owner() {
     }
@@ -39,7 +33,7 @@ public class Owner {
         this.phoneNumber = phoneNumber;
     }
 
-    // Getters and setters
+    //getters and setters
     public int getOwnerId() {
         return ownerId;
     }
@@ -80,7 +74,7 @@ public class Owner {
         this.pets = pets;
     }
 
-    // Override toString method for debugging purposes
+    //override toString method for debugging purposes
     @Override
     public String toString() {
         return "Owner{" +

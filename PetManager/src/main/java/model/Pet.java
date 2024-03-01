@@ -1,13 +1,6 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "pets")
@@ -16,23 +9,23 @@ public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pet_id")
-    private int petId;
+    private int petId; //unique id for pet
     
     @Column(name = "name")
-    private String name;
+    private String name; //pet's name
     
     @Column(name = "species")
-    private String species;
+    private String species; //pet's species
     
     @Column(name = "breed")
-    private String breed;
+    private String breed; //pet's breed
     
     @Column(name = "age")
-    private int age;
+    private int age; //pet's age
     
     @ManyToOne
     @JoinColumn(name = "owner_id")
-    private Owner owner;
+    private Owner owner; //owner of pet
     
     public Pet() {
     }
@@ -45,7 +38,7 @@ public class Pet {
         this.owner = owner;
     }
 
-    // Getters and setters
+    //getters and setters
     public int getPetId() {
         return petId;
     }
@@ -94,7 +87,7 @@ public class Pet {
         this.owner = owner;
     }
 
-    // Override toString method for debugging purposes
+    //override toString method for debugging purposes
     @Override
     public String toString() {
         return "Pet{" +

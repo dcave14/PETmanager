@@ -18,20 +18,23 @@ public class DeleteOwnerServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
+        //initialize ownerService with OwnerDAOImpl
         this.ownerService = new OwnerService(new OwnerDAOImpl());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //parse ownerId from request parameters
         int ownerId = Integer.parseInt(request.getParameter("ownerId"));
         
+        //delete owner using ownerService
         ownerService.deleteOwner(ownerId);
 
+        //set response headers to prevent caching
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         response.setHeader("Pragma", "no-cache");
         response.setDateHeader("Expires", 0);
 
-        
+        //redirect to ownersList.jsp
         response.sendRedirect("ownersList.jsp");
     }
-
 }
